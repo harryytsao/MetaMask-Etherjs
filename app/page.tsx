@@ -35,7 +35,6 @@ export default function Home() {
       }
     } else {
       try {
-        console.log('a')
         toast.error('MetaMask not detected.', {
           position: "top-right"
         });
@@ -54,7 +53,7 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen">
-        <button className="bg-blue-500 text-white hover:bg-blue-700 font-bold py-2 px-4 mt-3 rounded" onClick={connectWallet}>Connect Wallet</button>
+        <button className="bg-blue-500 text-white hover:bg-blue-700 active:opacity-50 transition-all font-bold py-2 px-4 mt-3 rounded" onClick={connectWallet}>Connect Wallet</button>
         {showInfo && <h3 className="mt-3">Wallet Address: {walletAddress}</h3>}
         {showInfo && <h3 className="mt-3">Ethereum Balance: {balance !== null ? balance.toString() + " ETH" : 'Loading...'}</h3>}
       </div>
