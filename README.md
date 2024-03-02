@@ -1,1 +1,1 @@
-### MetaMask Wallet Connect and EtherJS
+### MetaMask Wallet Connect and Ethers.Js
