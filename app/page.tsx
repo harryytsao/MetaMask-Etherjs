@@ -56,10 +56,13 @@ export default function Home() {
       setLatestBlock(block);
 
       if (walletAddress) {
-        const history = await provider.getTransactionHistory(walletAddress, {
-          fromBlock: latestBlock.number - 10000n // Look back ~10000 blocks
-        });
-        setTransactions(history?.slice(0, 5) ?? []);
+        const txs = latestBlock.transactions
+          .filter((tx: any) =>
+            tx.from?.toLowerCase() === walletAddress.toLowerCase() ||
+            tx.to?.toLowerCase() === walletAddress.toLowerCase()
+          )
+          .slice(0, 5);
+        setTransactions(txs);
       }
     } catch (error) {
       console.error('Error fetching blockchain data:', error);
